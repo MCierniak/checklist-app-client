@@ -1,6 +1,7 @@
 {
-  "name": "client",
+  "name": "checklist-app-frontend",
   "version": "0.1.0",
+  "description": "A simple React.js + Node.js project.",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
