@@ -1,8 +1,8 @@
-# Checklist App
+# Checklist App Client
 
 ## Description
 
-A simple React.js + Node.js web app for managing and using quick checklists.
+A simple React.js + Node.js web app for managing and using quick checklists. This is the frontend client repo, for the backend server, see (link to be added later).
 
 ## Features
 
@@ -15,7 +15,6 @@ A simple React.js + Node.js web app for managing and using quick checklists.
 ### TODO
 
 - User interface (responsive)
-- App logic
 - Autosave to JSON
 - E-mail (GMail) support
 - User accounts (access to past autosaves)
@@ -48,6 +47,6 @@ The App:
 
 ## Changelog
 
-### 2023.04.29
+### 2023.04.29 - v0.1.0
 
 - Project started.
