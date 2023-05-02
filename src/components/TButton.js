@@ -1,4 +1,4 @@
-import "./TButton.css";
+import "../styles/TButton.css";
 
 const TButton = (props) => {
     const {isActive, ...other} = props;

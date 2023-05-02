@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./TopNav.css";
+import "../styles/TopNav.css";
 
 const TopNav = (props) => {
   return (

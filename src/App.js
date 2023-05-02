@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 
+import MainWindow, {Page1, Page2, Page3, Page4} from "./components/MainWindow";
 import DateTimeHeader from "./components/DateTimeHeader";
-import MainWindow from "./components/MainWindow";
+import SideNav from "./components/SideNav";
 import TButton from "./components/TButton";
 import TopNav from "./components/TopNav";
-import "./App.css";
+import "./styles/App.css";
 
 const parse_datetime = () => {
   const raw_date = new Date();
@@ -20,6 +21,7 @@ const parse_datetime = () => {
 const App = () => {
   const [dateTime, setDateTime] = useState(parse_datetime());
   const [page, setPage] = useState(0);
+  const [sideBarOpen, setSideBarOpen] = useState(false);
 
   const dateTimeRef = useRef(dateTime);
   dateTimeRef.current = dateTime;
@@ -31,6 +33,14 @@ const App = () => {
 
   function changePage(num) {
     setPage(num);
+  }
+
+  function openSideBar() {
+    setSideBarOpen(true)
+  }
+
+  function closeSideBar() {
+    setSideBarOpen(false)
   }
 
   useEffect(() => {
@@ -45,9 +55,23 @@ const App = () => {
         <TButton isActive={page === 1} onClick={() => changePage(1)}>News</TButton>
         <TButton isActive={page === 2} onClick={() => changePage(2)}>Contact</TButton>
         <TButton isActive={page === 3} onClick={() => changePage(3)}>About</TButton>
+        <TButton isActive={sideBarOpen} onClick={() => openSideBar()}>Open Side Panel</TButton>
         <DateTimeHeader date_time={dateTime}/>
       </TopNav>
-      <MainWindow activePage={page}/>
+      <div>
+        <SideNav isSideBarOpen={sideBarOpen}>
+          <button className="closeBtn" onClick={() => closeSideBar()}>&times;</button>
+        </SideNav>
+        <MainWindow isSideBarOpen={sideBarOpen}>
+          {
+            page === 0 ? <Page1 /> :
+            page === 1 ? <Page2 /> :
+            page === 2 ? <Page3 /> :
+            page === 3 ? <Page4 /> :
+            ""
+          }
+        </MainWindow>
+      </div>
     </React.Fragment>
   );
 };

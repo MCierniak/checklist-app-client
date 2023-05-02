@@ -1,4 +1,4 @@
-import "./DateTimeHeader.css";
+import "../styles/DateTimeHeader.css";
 
 const DateTimeHeader = (props) => {
     return (

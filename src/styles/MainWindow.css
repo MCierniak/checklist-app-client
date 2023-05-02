@@ -1,0 +1,16 @@
+.mainWindow,
+.mainWindow_sideNav_open 
+{
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100vh - 48px - 10px);
+    transition: margin-left .5s;
+}
+
+.mainWindow {
+    margin-left: 0px;
+}
+
+.mainWindow_sideNav_open {
+    margin-left: 250px;
+}
