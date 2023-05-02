@@ -29,9 +29,10 @@
     color: white;
 }
 
-.topNav .dateTime {
+.topNav h1 {
     position: absolute;
     color: #f2f2f2;
     font-size: 17px;
-    left: 50%;
+    width: 146px;
+    left: calc(50% - 73px);
 }
