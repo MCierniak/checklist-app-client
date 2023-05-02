@@ -2,10 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 
 import DateTimeHeader from "./components/DateTimeHeader";
 import MainWindow from "./components/MainWindow";
+import TButton from "./components/TButton";
 import TopNav from "./components/TopNav";
 import "./App.css";
 
-function parse_datetime() {
+const parse_datetime = () => {
   const raw_date = new Date();
   return [
     String(raw_date.getFullYear()),
@@ -14,11 +15,11 @@ function parse_datetime() {
     String(raw_date.getHours()),
     String(raw_date.getMinutes()).padStart(2, "0")
   ];
-}
+};
 
-export default function App() {
-  const init = parse_datetime();
-  const [dateTime, setDateTime] = useState(init);
+const App = () => {
+  const [dateTime, setDateTime] = useState(parse_datetime());
+  const [page, setPage] = useState(0);
 
   const dateTimeRef = useRef(dateTime);
   dateTimeRef.current = dateTime;
@@ -26,6 +27,10 @@ export default function App() {
   function refreshDateTime() {
     const newDateTime = parse_datetime();
     if(newDateTime[4] !== dateTimeRef.current[4]) setDateTime(newDateTime);
+  }
+
+  function changePage(num) {
+    setPage(num);
   }
 
   useEffect(() => {
@@ -36,13 +41,15 @@ export default function App() {
   return(
     <React.Fragment>
       <TopNav>
-        <button className="active">Home</button>
-        <button>News</button>
-        <button>Contact</button>
-        <button>About</button>
+        <TButton isActive={page === 0} onClick={() => changePage(0)}>Home</TButton>
+        <TButton isActive={page === 1} onClick={() => changePage(1)}>News</TButton>
+        <TButton isActive={page === 2} onClick={() => changePage(2)}>Contact</TButton>
+        <TButton isActive={page === 3} onClick={() => changePage(3)}>About</TButton>
         <DateTimeHeader date_time={dateTime}/>
       </TopNav>
-      <MainWindow />
+      <MainWindow activePage={page}/>
     </React.Fragment>
   );
-}
+};
+
+export default App;
