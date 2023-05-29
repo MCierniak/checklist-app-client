@@ -1,12 +1,10 @@
-import "../styles/TButton.css";
-
 const TButton = (props) => {
-    const {isActive, ...other} = props;
+    const {isActive, className, ...other} = props;
     if(isActive) {
-        return <button {...other} className="active" />;
+        return <button {...other} className={className + " tButton active"} />;
     } 
     else {
-        return <button {...other} />;
+        return <button {...other} className={className + " tButton"} />;
     }
 };
 

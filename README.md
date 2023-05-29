@@ -10,16 +10,24 @@ A simple React.js + Node.js web app for managing and using quick checklists. Thi
 
 ### WIP
 
-- User interface (desktop fullscreen)
+- User interface: TabNav
+- User interface: Buttons
 
 ### TODO
 
-- User interface (responsive)
-- Autosave to JSON
+- User interface: Search bar
+- User interface: Accordion checklist
+- User interface: Login modal
+- User interface: E-mail modal
+- User interface: Settings modal
+- User interface: New file modal
 - E-mail (GMail) support
-- User accounts (access to past autosaves)
+- Autosave to JSON
 - User settings
-- Rest of the TODO list :P
+- User accounts (access to past autosaves)
+- KPI monitoring
+- User interface: Color scheme, icons, dark/light mode
+- User interface (responsive)
 
 ## Usecase
 

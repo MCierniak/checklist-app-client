@@ -1,15 +1,12 @@
 import React from "react";
 
-import "../styles/SideNav.css";
-
 const SideNav = (props) => {
-    return (
-        <React.Fragment>
-            <nav className={props.isSideBarOpen ? "sideNav_open" : "sideNav"}>
-                {props.children}
-            </nav>
-        </React.Fragment>
-    );
+  const {isSideNavOpen, className, ...other} = props;
+  return (
+    <React.Fragment>
+      <nav {...other} className={className + (isSideNavOpen ? " sideNav_open" : " sideNav")} />
+    </React.Fragment>
+  );
 };
 
 export default SideNav;

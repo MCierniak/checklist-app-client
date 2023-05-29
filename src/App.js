@@ -1,68 +1,33 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 
 import MainWindow, {Page1, Page2, Page3, Page4} from "./components/MainWindow";
 import DateTimeHeader from "./components/DateTimeHeader";
 import SideNav from "./components/SideNav";
 import TButton from "./components/TButton";
 import TopNav from "./components/TopNav";
-import "./styles/App.css";
-
-const parse_datetime = () => {
-  const raw_date = new Date();
-  return [
-    String(raw_date.getFullYear()),
-    String(raw_date.getMonth() + 1),
-    String(raw_date.getDate()),
-    String(raw_date.getHours()),
-    String(raw_date.getMinutes()).padStart(2, "0")
-  ];
-};
 
 const App = () => {
-  const [dateTime, setDateTime] = useState(parse_datetime());
   const [page, setPage] = useState(0);
-  const [sideBarOpen, setSideBarOpen] = useState(false);
-
-  const dateTimeRef = useRef(dateTime);
-  dateTimeRef.current = dateTime;
-
-  function refreshDateTime() {
-    const newDateTime = parse_datetime();
-    if(newDateTime[4] !== dateTimeRef.current[4]) setDateTime(newDateTime);
-  }
-
-  function changePage(num) {
-    setPage(num);
-  }
-
-  function openSideBar() {
-    setSideBarOpen(true)
-  }
-
-  function closeSideBar() {
-    setSideBarOpen(false)
-  }
-
-  useEffect(() => {
-    const timerId = setInterval(refreshDateTime, 1000);
-    return () => clearInterval(timerId);
-  }, []);
-
+  const [sideNavOpen, setSideNavOpen] = useState(false);
   return(
     <React.Fragment>
       <TopNav>
-        <TButton isActive={page === 0} onClick={() => changePage(0)}>Home</TButton>
-        <TButton isActive={page === 1} onClick={() => changePage(1)}>News</TButton>
-        <TButton isActive={page === 2} onClick={() => changePage(2)}>Contact</TButton>
-        <TButton isActive={page === 3} onClick={() => changePage(3)}>About</TButton>
-        <TButton isActive={sideBarOpen} onClick={() => openSideBar()}>Open Side Panel</TButton>
-        <DateTimeHeader date_time={dateTime}/>
+        <TButton isActive={page === 0} onClick={() => setPage(0)}>Home</TButton>
+        <TButton isActive={page === 1} onClick={() => setPage(1)}>News</TButton>
+        <TButton isActive={page === 2} onClick={() => setPage(2)}>Contact</TButton>
+        <TButton isActive={page === 3} onClick={() => setPage(3)}>About</TButton>
+        <TButton isActive={sideNavOpen} onClick={() => setSideNavOpen(!sideNavOpen)}>Open Side Panel</TButton>
+        <DateTimeHeader />
       </TopNav>
       <div>
-        <SideNav isSideBarOpen={sideBarOpen}>
-          <button className="closeBtn" onClick={() => closeSideBar()}>&times;</button>
+        <SideNav isSideNavOpen={sideNavOpen}>
+          <button className="closeBtn" onClick={() => setSideNavOpen(!sideNavOpen)}>&times;</button>
+          <TButton>About</TButton>
+          <TButton>Services</TButton>
+          <TButton>Clients</TButton>
+          <TButton>Contact</TButton>
         </SideNav>
-        <MainWindow isSideBarOpen={sideBarOpen}>
+        <MainWindow isSideNavOpen={sideNavOpen}>
           {
             page === 0 ? <Page1 /> :
             page === 1 ? <Page2 /> :

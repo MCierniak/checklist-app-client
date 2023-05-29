@@ -1,0 +1,104 @@
+html {
+    overflow: hidden;
+}
+body {
+    margin: 0px;
+}
+
+.topNav {
+    background-color: #333;
+    overflow: hidden;
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 48px;
+}
+.topNav h1 {
+    position: absolute;
+    color: #f2f2f2;
+    font-size: 17px;
+    width: 146px;
+    left: calc(50% - 73px);
+}
+.topNav .tButton {
+    float: left;
+    color: #f2f2f2;
+    background: none;
+    border: none;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+.topNav .tButton:hover {
+    background-color: #ddd;
+    color: black;
+}
+.topNav .tButton.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+.sideNav,
+.sideNav_open {
+    height: calc(100% - 48px - 60px);
+    position: fixed;
+    top: 48px;
+    left: 0;
+    background-color: #333;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+.sideNav {
+    width: 0;
+}
+.sideNav_open {
+    width: 250px;
+}
+.sideNav .closeBtn,
+.sideNav_open .closeBtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    background: none;
+    border: none;
+    color: #818181;
+}
+.sideNav .closeBtn:hover,
+.sideNav_open .closeBtn:hover {
+    color: #f1f1f1;
+}
+.sideNav .tButton,
+.sideNav_open .tButton {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    background: none;
+    border: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+.sideNav .tButton:hover,
+.sideNav_open .tButton:hover {
+    color: #f1f1f1;
+}
+
+.mainWindow,
+.mainWindow_sideNav_open 
+{
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100vh - 48px - 10px);
+    transition: margin-left .5s;
+}
+.mainWindow {
+    margin-left: 0px;
+}
+.mainWindow_sideNav_open {
+    margin-left: 250px;
+}

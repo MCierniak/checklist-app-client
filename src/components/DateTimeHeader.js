@@ -1,8 +1,22 @@
-import "../styles/DateTimeHeader.css";
+import { useState, useEffect } from "react";
 
+//Why does this component render twice every minute OR twice on parent re-render???
+//Note: StrictMode is off!
 const DateTimeHeader = (props) => {
+    const {children, ...other} = props;
+    const rawDate = new Date();
+    const [state, setState] = useState(rawDate.getMinutes());
+    useEffect(() => {
+        const timer = setInterval(() => { 
+            setState((prev) => {
+                const newRawDate = new Date();
+                return newRawDate.getMinutes();
+            });
+        }, 1000);
+        return () => clearInterval(timer);
+    }, []);
     return (
-        <h1>{props.date_time[0]}-{props.date_time[1]}-{props.date_time[2]} {props.date_time[3]}:{props.date_time[4]}</h1>
+        <h1 {...other} children={`${rawDate.getFullYear()}-${rawDate.getMonth() + 1}-${rawDate.getDate()} ${rawDate.getHours()}:${String(state).padStart(2, "0")}`} />
     );
 };
 
